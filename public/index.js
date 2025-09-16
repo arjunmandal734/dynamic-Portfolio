@@ -67,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    /*
     // Dynamic Skills Section
     const skills = [
         { name: 'HTML5', icon: 'fab fa-html5' }, // Using Font Awesome for icons (if you link it)
@@ -95,58 +96,83 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     loadSkills();
+*/
+    // Dynamic Skills Section with images from inventory folder
+    const skills = [
+        { name: 'HTML5', icon: './inventory/html.png' },
+        { name: 'CSS3', icon: 'inventory/css.png' },
+        { name: 'JavaScript', icon: 'inventory/java-script.png' },
+        { name: 'Node.js', icon: 'inventory/nodejs.png' },
+        { name: 'AWS', icon: 'inventory/aws.png' },
+        { name: 'Java', icon: 'inventory/java2.png' },
+        { name: 'Git & GitHub', icon: 'inventory/github.png' },
+        { name: 'Firebase', icon: 'inventory/firebase.png' }
+    ];
+
+    const skillsContainer = document.getElementById('skills-container');
+
+    function loadSkills() {
+        skillsContainer.innerHTML = ''; // Clear existing skills
+        skills.forEach(skill => {
+            const skillItem = document.createElement('div');
+            skillItem.classList.add('skill-item');
+            skillItem.innerHTML = `
+            ${skill.icon ? `<img src="${skill.icon}" alt="${skill.name}" class="skill-icon">` : ''}
+            <h3>${skill.name}</h3>
+        `;
+            skillsContainer.appendChild(skillItem);
+        });
+    }
+
+    loadSkills();
+
 
     // Portfolio Items Data
     const portfolioItems = [
         {
             id: 1,
-            title: 'E-commerce Store',
-            description: 'A full-stack e-commerce platform built with React and Node.js.',
-            image: 'https://via.placeholder.com/300x200/007bff/FFFFFF?text=Project+1',
-            category: 'fullstack',
+            title: 'ShopEasePHP',
+            description: 'A secure shopping cart system using PHP sessions and MySQL backend with product management and checkout flow.',
+            image: './inventory/shopvault.png',
+            category: 'backend',
             tags: ['React', 'Node.js', 'MongoDB'],
-            liveLink: '#',
-            githubLink: '#'
+            githubLink: 'https://github.com/arjunmandal734/ShopEasePHP'
         },
         {
             id: 2,
-            title: 'Personal Blog',
-            description: 'A responsive blog website designed for content creators.',
-            image: 'https://via.placeholder.com/300x200/28a745/FFFFFF?text=Project+2',
-            category: 'web-design',
+            title: 'BattelLink',
+            description: 'A multiplayer esports slot booking system, profile creating, contest hoisting with secure backend services with role based access control and game data sync.',
+            image: './inventory/battellink.png',
+            category: "backend",
             tags: ['HTML', 'CSS', 'JavaScript'],
-            liveLink: '#',
-            githubLink: '#'
+            githubLink: 'https://github.com/arjunmandal734/eSports-slot-booking-web-application'
         },
         {
             id: 3,
-            title: 'Task Manager App',
-            description: 'A simple task management application with drag-and-drop functionality.',
-            image: 'https://via.placeholder.com/300x200/ffc107/FFFFFF?text=Project+3',
-            category: 'frontend',
-            tags: ['Vue.js', 'Firebase'],
-            liveLink: '#',
-            githubLink: '#'
+            title: 'AuthVault',
+            description: 'A secure login/signup system with password encryption, user roles (admin/user), and session-based access control.',
+            image: './inventory/authvalt.png',
+            category: 'backend',
+            tags: ['Vue.js', 'Firebase', "php"],
+            githubLink: 'https://github.com/arjunmandal734/AuthVault'
         },
         {
             id: 4,
-            title: 'RESTful API Service',
-            description: 'Backend API for a mobile application, built with Express.js.',
-            image: 'https://via.placeholder.com/300x200/dc3545/FFFFFF?text=Project+4',
-            category: 'backend',
+            title: 'Remote Planting',
+            description: 'It is a service where people can plant vegetables and plants remotely',
+            image: './inventory/remotePlanting.png',
+            category: 'frontend',
             tags: ['Node.js', 'Express', 'PostgreSQL'],
-            liveLink: '#',
             githubLink: '#'
         },
         {
             id: 5,
             title: 'Portfolio Website',
-            description: 'This very website! Built with pure HTML, CSS, and JavaScript.',
-            image: 'https://via.placeholder.com/300x200/6f42c1/FFFFFF?text=Project+5',
+            description: 'A dynamic and responsive personal portfolio website built from scratch using pure HTML, CSS, and JavaScript. Features include a dark mode toggle, smooth scrolling, and dynamic content loading for skills and projects.',
+            image: './inventory/protfolio.png',
             category: 'web-design',
             tags: ['HTML', 'CSS', 'JavaScript'],
-            liveLink: '#',
-            githubLink: '#'
+            githubLink: 'https://github.com/arjunmandal734/dynamic-Portfolio'
         }
     ];
 
@@ -174,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h3>${item.title}</h3>
                     <p>${item.description}</p>
                     <div class="project-links">
-                        <a href="${item.liveLink}" target="_blank">Live Demo</a>
+                        
                         <a href="${item.githubLink}" target="_blank">GitHub</a>
                     </div>
                 </div>
@@ -234,12 +260,12 @@ document.addEventListener('DOMContentLoaded', () => {
         formStatus.style.display = 'block';
 
         setTimeout(() => {
-          
+
 
             formStatus.textContent = 'Message sent successfully! I will get back to you soon.';
             formStatus.classList.remove('error');
             formStatus.classList.add('success');
             contactForm.reset(); // Clear the form
-        }, 2000); 
+        }, 2000);
     });
 });
